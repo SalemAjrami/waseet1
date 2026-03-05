@@ -222,6 +222,14 @@ const AdminDashboardPage = () => {
         } catch (e) { alert('Failed to delete user'); }
     };
 
+    const handleDeleteSession = async (id) => {
+        if (!window.confirm('Delete this session?')) return;
+        try {
+            await deleteSession(id);
+            setSessions(prev => prev.filter(s => s._id !== id && s.id !== id));
+        } catch (e) { alert('Failed to delete session'); }
+    };
+
     const handleDeleteHold = async (id) => {
         if (!window.confirm('Delete this hold?')) return;
         try {
@@ -317,17 +325,21 @@ const AdminDashboardPage = () => {
                                         <th className="px-6 py-4 font-bold">Title</th>
                                         <th className="px-6 py-4 font-bold">Amount</th>
                                         <th className="px-6 py-4 font-bold">Status</th>
+                                        <th className="px-6 py-4 font-bold text-right">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-slate-100">
                                     {sessions.length === 0 ? (
-                                        <tr><td colSpan="3" className="px-6 py-8 text-center text-slate-400">No sessions found / API unavailable</td></tr>
+                                        <tr><td colSpan="4" className="px-6 py-8 text-center text-slate-400">No sessions found / API unavailable</td></tr>
                                     ) : (
                                         sessions.map((s) => (
                                             <tr key={s._id || s.id} className="hover:bg-slate-50">
                                                 <td className="px-6 py-4 font-medium text-slate-800">{s.title}</td>
                                                 <td className="px-6 py-4 text-slate-500">${s.amount}</td>
                                                 <td className="px-6 py-4 text-slate-500">{s.status}</td>
+                                                <td className="px-6 py-4 text-right">
+                                                    <button onClick={() => handleDeleteSession(s._id || s.id)} className="text-red-500 hover:text-red-700 p-2"><Trash2 size={16} /></button>
+                                                </td>
                                             </tr>
                                         ))
                                     )}

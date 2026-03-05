@@ -17,6 +17,7 @@ import { SummaryCard, StatusBadge } from '../components/dashboard/DashboardWidge
 import WalletTab from '../components/dashboard/WalletTab';
 import ProfileTab from '../components/dashboard/ProfileTab';
 import SettingsTab from '../components/dashboard/SettingsTab';
+import logo from '../assets/logo.png';
 
 
 
@@ -41,43 +42,33 @@ const Sidebar = ({ activeTab, setActiveTab, userData, collapsed, setCollapsed, m
     }
 
     const sidebarContent = (
-        <div className="flex flex-col h-full">
-            <div className={`flex items-center ${collapsed ? 'justify-center' : 'justify-between'} px-5 py-6 border-b border-slate-100`}>
-                <div className="flex items-center gap-2.5">
-                    <div className="bg-[#3b96d7] p-2 rounded-lg shadow-sm flex-shrink-0">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4 8L8 16L12 8L16 16L20 8" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                    </div>
-                    {!collapsed && <span className="text-[#3b96d7] text-xl font-bold tracking-tight">Waseet</span>}
+        <div className="flex flex-col h-full relative">
+            <div className={`flex items-center ${collapsed ? 'justify-center py-6' : 'justify-start py-8'} px-5 border-b border-slate-100 relative min-h-[104px]`}>
+                <div className={`flex items-center ${collapsed ? 'gap-0' : 'gap-3.5'} w-full`}>
+                    {/* The Logo */}
+                    <img src={logo} alt="Waseet Logo" className="w-[48px] h-[48px] rounded-[12px] object-contain flex-shrink-0 transition-all duration-300 shadow-sm" />
+
+                    {!collapsed && (
+                        <div className="flex flex-col justify-center overflow-hidden flex-1">
+                            <h1 className="text-[18px] font-bold text-[#3B82F6] leading-none tracking-tight truncate pb-1">Waseet</h1>
+                            <p className="text-[12px] font-medium text-slate-500 truncate">
+                                Welcome, {userData.firstName || 'User'} {userData.lastName || ''}
+                            </p>
+                        </div>
+                    )}
                 </div>
-                <button onClick={() => setCollapsed(!collapsed)} className="hidden lg:flex items-center justify-center w-7 h-7 rounded-lg hover:bg-slate-100 transition-colors text-slate-400">
-                    <ChevronLeft size={16} className={`transition-transform duration-300 ${collapsed ? 'rotate-180' : ''}`} />
+                {/* Collapse button — desktop only */}
+                <button
+                    onClick={() => setCollapsed(!collapsed)}
+                    className="absolute -right-3 top-1/2 -translate-y-1/2 hidden lg:flex items-center justify-center w-6 h-6 bg-white border border-slate-200 rounded-full hover:bg-slate-50 transition-colors text-slate-400 shadow-sm z-10"
+                >
+                    <ChevronLeft size={14} className={`transition-transform duration-300 ${collapsed ? 'rotate-180' : ''}`} />
                 </button>
-                <button onClick={() => setMobileOpen(false)} className="lg:hidden flex items-center justify-center w-7 h-7 rounded-lg hover:bg-slate-100 transition-colors text-slate-400">
+                {/* Close button — mobile only */}
+                <button onClick={() => setMobileOpen(false)} className="absolute right-4 top-1/2 -translate-y-1/2 lg:hidden flex items-center justify-center w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 transition-colors text-slate-500 z-10">
                     <X size={18} />
                 </button>
             </div>
-            {!collapsed && (
-                <div className="px-5 py-4 border-b border-slate-100">
-                    <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-gradient-to-br from-[#3b96d7] to-[#2870a8] rounded-xl flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
-                            {(userData.firstName || 'U').charAt(0).toUpperCase()}
-                        </div>
-                        <div className="min-w-0">
-                            <p className="text-sm font-bold text-slate-800 truncate">{userData.firstName || 'User'} {userData.lastName || ''}</p>
-                            <p className="text-[10px] text-slate-400 truncate">{userData.email || ''}</p>
-                        </div>
-                    </div>
-                </div>
-            )}
-            {collapsed && (
-                <div className="flex justify-center py-4 border-b border-slate-100">
-                    <div className="w-10 h-10 bg-gradient-to-br from-[#3b96d7] to-[#2870a8] rounded-xl flex items-center justify-center text-white font-bold text-sm">
-                        {(userData.firstName || 'U').charAt(0).toUpperCase()}
-                    </div>
-                </div>
-            )}
             <nav className="flex-1 px-3 py-4 space-y-1">
                 {displayItems.map((item) => {
                     const Icon = item.icon;
@@ -1132,9 +1123,7 @@ const DashboardPage = () => {
             <main className="flex-1 flex flex-col h-screen overflow-hidden relative transition-all duration-300">
                 <header className="lg:hidden flex items-center justify-between px-5 py-4 bg-white border-b border-slate-100 z-20">
                     <div className="flex items-center gap-3">
-                        <div className="bg-[#3B82F6] p-2 rounded-lg shadow-sm">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 8L8 16L12 8L16 16L20 8" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                        </div>
+                        <img src={logo} alt="Waseet Logo" className="w-8 h-8 rounded-lg object-contain" />
                         <span className="text-[#3B82F6] text-lg font-bold">Waseet</span>
                     </div>
                     <button onClick={() => setMobileOpen(true)} className="p-2 rounded-lg hover:bg-slate-50 text-slate-500">

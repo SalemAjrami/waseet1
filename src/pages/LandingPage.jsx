@@ -20,6 +20,7 @@ import {
     Twitter,
     Facebook,
 } from 'lucide-react';
+import logo from '../assets/logo.png';
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
@@ -33,10 +34,8 @@ const LandingPage = ({ onLogin, onSignup }) => {
             {/* --- 1. NAVIGATION --- */}
             <nav className="flex items-center justify-between px-8 py-5 max-w-7xl mx-auto">
                 <div className="flex items-center gap-2.5">
-                    <div className="bg-[#3B82F6] p-2 rounded-xl shadow-lg shadow-blue-200/50">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4 8L8 16L12 8L16 16L20 8" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
+                    <div className="p-2 rounded-xl shadow-sm bg-white border border-slate-100">
+                        <img src={logo} alt="Waseet Logo" className="w-6 h-6 object-contain" />
                     </div>
                     <span className="text-[#3B82F6] text-2xl font-bold tracking-tight">Waseet</span>
                 </div>
@@ -293,10 +292,8 @@ const LandingPage = ({ onLogin, onSignup }) => {
                     <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mb-16">
                         <div className="col-span-1">
                             <div className="flex items-center gap-2.5 font-bold text-2xl mb-4">
-                                <div className="bg-[#3B82F6] p-1.5 rounded-lg">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M4 8L8 16L12 8L16 16L20 8" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                                    </svg>
+                                <div className="p-1.5 rounded-lg bg-white/20 backdrop-blur-sm">
+                                    <img src={logo} alt="Waseet Logo" className="w-5 h-5 object-contain" />
                                 </div>
                                 Waseet
                             </div>

@@ -32,12 +32,12 @@ const SectionCard = ({ title, subtitle, icon, children }) => (
 const SettingsTab = () => {
     // --- Profile state ---
     const [profile, setProfile] = useState({
-        firstName: 'Ahmad',
-        lastName: 'Al-Bukhait',
-        email: 'ahmad@waseet.io',
-        phone: '+966 50 123 4567',
-        country: 'Saudi Arabia',
-        timezone: 'Asia/Riyadh',
+        firstName: 'isaac',
+        lastName: 'eqdaih',
+        email: 'isaac@email.com',
+        phone: '+970 594 123 456',
+        country: 'Palestine',
+        timezone: 'Asia/Gaza',
         bio: 'Full-stack developer specializing in fintech and escrow platforms.',
     });
 

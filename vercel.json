@@ -1,8 +1,8 @@
 {
     "rewrites": [
         {
-            "source": "/api/(.*)",
-            "destination": "https://waseet-rk8w.onrender.com/api/$1"
+            "source": "/api/:match*",
+            "destination": "https://waseet-rk8w.onrender.com/api/:match*"
         },
         {
             "source": "/(.*)",
