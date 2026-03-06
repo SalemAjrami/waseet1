@@ -17,6 +17,7 @@ import { SummaryCard, StatusBadge } from '../components/dashboard/DashboardWidge
 import WalletTab from '../components/dashboard/WalletTab';
 import ProfileTab from '../components/dashboard/ProfileTab';
 import SettingsTab from '../components/dashboard/SettingsTab';
+import MyProductsTab from '../components/dashboard/MyProductsTab';
 import logo from '../assets/logo.png';
 
 
@@ -30,10 +31,11 @@ const Sidebar = ({ activeTab, setActiveTab, userData, collapsed, setCollapsed, m
     };
     const NAV_ITEMS = [
         { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
-        { id: 'services', label: 'Services', icon: ShoppingBag },
+        { id: 'services', label: 'Our Services', icon: ShoppingBag },
         { id: 'sessions', label: 'Sessions', icon: Briefcase },
         { id: 'wallet', label: 'Wallet', icon: Wallet },
-        { id: 'profile', label: 'Profile', icon: User },
+        { id: 'products', label: 'My Products', icon: Package },
+        { id: 'disputes', label: 'Disputes', icon: AlertCircle },
         { id: 'settings', label: 'Settings', icon: Settings },
     ];
     const displayItems = [...NAV_ITEMS];
@@ -1111,6 +1113,7 @@ const DashboardPage = () => {
             case 'profile': return <ProfileTab userData={userData} />;
             case 'services': return <ServicesTab setActiveTab={setActiveTab} />;
             case 'settings': return <SettingsTab />;
+            case 'products': return <MyProductsTab />;
             case 'createSession': return <CreateSessionTab createdSession={createdSession} setCreatedSession={setCreatedSession} newSession={newSession} setNewSession={setNewSession} creating={creating} createError={createError} currencies={currencies} handleCreateSession={handleCreateSession} setActiveTab={setActiveTab} />;
             case 'sessionDetail': return selectedSession ? <SessionDetailTab selectedSession={selectedSession} setSelectedSession={setSelectedSession} viewRole={viewRole} setViewRole={setViewRole} userData={userData} setActiveTab={setActiveTab} onRefreshSessions={fetchDashboardData} /> : <div className="flex justify-center items-center h-64 text-slate-400">Session not found</div>;
             case 'dashboard': default: return <OverviewTab userData={userData} sessions={sessions} setActiveTab={setActiveTab} setView={setView} showNotifications={showNotifications} setShowNotifications={setShowNotifications} notifications={notifications} />;

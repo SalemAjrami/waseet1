@@ -2,17 +2,18 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     LayoutDashboard, ShoppingBag, Briefcase, CreditCard, User, Settings, UserPlus,
-    ChevronLeft, X, LogOut
+    ChevronLeft, X, LogOut, Package, AlertCircle, Wallet
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { clearTokens } from '../../services/api';
 import logo from '../../assets/logo.png';
 const NAV_ITEMS = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
-    { id: 'services', label: 'Services', icon: ShoppingBag },
+    { id: 'services', label: 'Our Services', icon: ShoppingBag },
     { id: 'sessions', label: 'Sessions', icon: Briefcase },
-    { id: 'payments', label: 'Payments', icon: CreditCard },
-    { id: 'profile', label: 'Profile', icon: User },
+    { id: 'wallet', label: 'Wallet', icon: Wallet },
+    { id: 'products', label: 'My Products', icon: Package },
+    { id: 'disputes', label: 'Disputes', icon: AlertCircle },
     { id: 'settings', label: 'Settings', icon: Settings },
 ];
 
